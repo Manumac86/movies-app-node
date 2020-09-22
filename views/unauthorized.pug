@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    .container.main-content
+        article.message.is-danger
+            .message-body
+                h1.title.has-text-danger Unauthorized
+                h2.subtitle.has-text-danger Please Login!
+                a.button.is-primary.my-3(href="/login")
+                  span.has-text-white Login

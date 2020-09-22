@@ -1,0 +1,109 @@
+:root {
+  --background-color-black: #000000;
+  --color-white: #ececec;
+  --primary-color: #261ad3;
+  --primary-color-darker: #bf0908;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.hero-body {
+  height: 480px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 50px 15px;
+}
+
+.main-hero {
+  position: relative;
+  background: url("/static/images/hero-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+
+.main-hero .title,
+.main-hero .subtitle {
+  color: var(--color-white);
+}
+
+
+
+.main-hero::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.logo {
+  width: 130px;
+}
+
+.logo.is-large {
+  width: 200px;
+}
+
+.divider {
+  border-top: 1px solid currentColor;
+  padding-top: 10px;
+}
+
+figure.cover-figure {
+  height: 190px;
+}
+
+img.cover-image {
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer {
+  border-top: 5px solid var(--primary-color);
+}
+
+/* Bulma overrides */
+.buttons.is-flex-spaced {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button.is-primary {
+  margin-top: .75rem;
+  background: var(--primary-color);
+}
+
+.button.is-halfwidth {
+  width: calc(50% - 4px);
+}
+
+.navbar.is-primary {
+  background: var(--background-color-black);
+}
+.navbar-item img {
+  width: 120px;
+  max-height: 120px;
+
+}
+
+.button.is-primary:hover,
+.button.is-primary:active {
+  background: var(--primary-color-darker);
+}
+
+.icon.has-text-primary {
+  color: var(--primary-color) !important;
+}
+
+.footer {
+  background-color: var(--background-color-black);
+}

@@ -1,0 +1,22 @@
+nav.navbar.is-primary
+    .container
+        .navbar-brand
+            a.navbar-item
+                img(src='/static/logo/movies-logo.jpg' width='112')
+        .navbar-menu
+            if user
+                .navbar-item
+                    span.title.has-text-white= `Hi ${user.username}!`
+            .navbar-end
+                .navbar-item
+                    a(href="/").has-text-white Home
+                .navbar-item
+                    a(href="/movies").has-text-white Movies
+                .navbar-item
+                    a(href="/api/movies").has-text-white Api
+                if user
+                    .navbar-item
+                        a(href="/logout").has-text-white Logout
+                else
+                    .navbar-item
+                        a(href="/login").has-text-white Login

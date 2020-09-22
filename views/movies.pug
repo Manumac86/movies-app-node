@@ -1,0 +1,40 @@
+extends layout.pug
+
+block hero
+  section.main-hero.is-dark.is-bold
+    .hero-body
+      .container
+        h1.title Scalar Movies App
+        h2.subtitle Find your favourites movies and rate them.
+
+block content
+  .container(style="flex: 1; padding: 50px 0; margin: 0 auto;")
+    h1.title Movies List
+    if user
+      h2.title= `Hello ${user.username}`
+      a.button.is-primary.my-3(href="/movies/create/new")
+        span.icon 
+          i.fas.fa-plus 
+        span.has-text-white Create New Movie
+    .columns.is-multiline
+      each movie in movies
+        .column.is-one-third
+          a(href=`/movies/${movie._id}`).has-text-dark
+            .card
+              .card-image
+                figure.image(style="height: 420px")
+                  img(src=movie.image_url style="height: 100%; object-fit: cover")
+              .card-content.px-1
+                h2.title.is-size-5= movie.title
+                span.subtitle.is-size-6= `Rate: ${movie.rated}`
+                br
+                span.my-1= `Rating: ${movie.rating}/5`
+                span.icon 
+                  i.fas.fa-star
+                br
+                span.my-1= `Release Date: ${movie.released_on}`
+                a(href=`/movies/${movie._id}`).button.is-fullwidth.is-primary
+                  strong Details
+                if user
+                  a(href=`/movies/${movie._id}/delete`).button.is-fullwidth.is-danger.mt-3
+                    strong Delete

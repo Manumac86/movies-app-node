@@ -1,0 +1,95 @@
+extends layout.pug
+
+block hero
+  section.main-hero.is-dark.is-bold
+    .hero-body
+      .container
+        h1.title Scalar Movies App
+        h2.subtitle Find your favourites movies and rate them.
+
+block content
+  .container(style="flex: 1; padding: 50px 0; margin: 0 auto; width: 80%;")
+    if movie
+      h1.title Edit Movie
+      form(id="edit" action=`/movies/${movie._id}` method="post").is-vertical
+        .field
+          label.label Title 
+          .control
+            input.input(type="text", id="title", name="title", value=`${movie.title}`)
+        .field
+          label.label Director
+          .control 
+            input.input(type="text", id="director", name="director", value=`${movie.director}`)
+        .field
+          label.label Genre 
+          .control
+            input.input(type="text", id="genre", name="genre", value=`${movie.genre}`)
+        .field
+          label.label Genre 
+          .control
+            input.input(type="text", id="year", name="year", value=`${movie.year}`)
+        .field
+          label.label Rate 
+          .control
+            input.input(type="text", id="rated", name="rated", value=`${movie.rated}`)
+        .field
+          label.label Release Date 
+          .control
+            input.input(type="text", id="released_on", name="released_on", value=`${movie.released_on}`)
+        .field
+          label.label Plot 
+          .control
+            textarea.textarea.has-fixed-size(type="text", id="plot", name="plot")=`${movie.plot}`
+        .field
+          label.label Image URL 
+          .control
+            input.input(type="url", id="image_url", name="image_url", value=`${movie.image_url}`)
+        .field
+          label.label Rating 
+          .control
+            input.input(type="number", id="rating", name="rating", min="0", max="5", value=`${movie.rating}`)
+            each rating, index in movie.historyRatings
+              input.input(type="hidden", name=`historyRatings[${index}]`, value=`${rating}`)
+          br
+          button.button.is-link(type="submit" value="Submit") Submit
+    else
+      h1.title Create Movie
+      form(id="create" action=`/movies/create/new` method="post")
+        .field
+          label.label Title 
+          .control
+            input.input(type="text", id="title", name="title", placeholder='A New Awesome Movie')
+        .field
+          label.label Director
+          .control 
+            input.input(type="text", id="director", name="director", placeholder='Steven Spielberg')
+        .field
+          label.label Genre 
+          .control
+            input.input(type="text", id="genre", name="genre", placeholder='Drama, Comedy, Action')
+        .field
+          label.label Year 
+          .control
+            input.input(type="text", id="year", name="year", placeholder='1999')
+        .field
+          label.label Rate 
+          .control
+            input.input(type="text", id="rated", name="rated", placeholder='PG-13')
+        .field
+          label.label Release Date 
+          .control
+            input.input(type="text", id="released_on", name="released_on", placeholder='1999-10-15')
+        .field
+          label.label Plot 
+          .control
+            textarea(type="text", id="plot", name="plot", placeholder='A long time ago in a galaxy far, far away....').textarea
+        .field
+          label.label Image URL 
+          .control
+            input.input(type="url", id="image_url", name="image_url", placeholder='https://server-url.com/image.jpg')
+        .field
+          label.label Rating 
+          .control
+            input.input(type="number", id="rating", name="rating", min="0", max="5", placeholder="5")
+          br
+          button.button.is-link(type="submit" value="Submit") Submit    
